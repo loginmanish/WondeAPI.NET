@@ -18,14 +18,14 @@ C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 ```
-VB
+VB.Net
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 ```
 
 
 ### Schools
-
+C#
 ```C#
 $client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -36,6 +36,7 @@ foreach (Dictionary<string, object> school in client.schools.all()) {
 }
 
 ```
+VB.Net
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -48,13 +49,14 @@ Next school
 ```
 
 ### Single School
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
 // Get single school
 var school = client.schools.get('SCHOOL_ID_GOES_HERE');
 ```
+VB.Net
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -64,7 +66,7 @@ school = client.schools.get('SCHOOL_ID_GOES_HERE')
 ```
 
 ### Pending Schools
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -73,6 +75,7 @@ foreach (Dictionary<string, object> school in client.schools.pending()) {
     Console.WriteLine("Pending School name {0}", school["name"]);
 }
 ```
+VB.Net
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -83,7 +86,7 @@ Next school
 ```
 
 ### Search Schools
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -103,6 +106,7 @@ foreach (Dictionary<string, object> school in client.schools.search(null, params
     Console.WriteLine("School searched is {0}", school[name]);
 }
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -126,11 +130,12 @@ Next school
 ### Request Access
 
 Provide the school ID to request access to a school's data.
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 client.requestAccess('A0000000000');
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 client.requestAccess('A0000000000')
@@ -139,18 +144,19 @@ client.requestAccess('A0000000000')
 ### Revoke Access
 
 Provide the school ID to access already approve or pending approval.
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 client.revokeAccess('A0000000000');
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 client.revokeAccess('A0000000000')
 ```
 
 ### Students
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -185,6 +191,7 @@ foreach (Dictionary<string, object> kv in school.students.all(new string[] { "co
 	Console.WriteLine("Student's Name is {0} {1}", kv["forename"], kv["surname"]);
 }
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -217,7 +224,7 @@ Next kv
 ```
 
 ### Achievements
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -228,6 +235,7 @@ foreach (Dictionary<string, object> achievement in school.achievements.all()) {
     Console.WriteLine("Comment: {0}", achievement["comment"]);
 }
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -241,7 +249,7 @@ Next achievement
 
 ### Assessment - (BETA)
 This endpoint is included in the stable release but is likely to change in the future. Please contact support for more information.
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -272,6 +280,7 @@ foreach (Dictionary<string, object> marksheet in school.assessment.marksheets.al
     Console.WriteLine("Marksheet ID: {0}", marksheet["id"]);
 }
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -304,7 +313,7 @@ Next marksheet
 ```
 
 ### Attendance
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
@@ -315,6 +324,7 @@ foreach (Dictionary<string, object> attendance in school.attendance.all()) {
     Console.WriteLine("Attendance Comment: {0}", attendance["comment"]);
 }
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -327,8 +337,8 @@ Next attendance
 ```
 
 ### POST Attendance
-
-```php
+C#
+```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
 // Initiate a new register
@@ -353,6 +363,7 @@ var result = school.attendance.sessionRegister(register);
 // Writeback id is part of the response
 Console.WriteLine ("Writeback id: {0}", result["writeback_id"]);
 ```
+VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
@@ -380,4 +391,4 @@ Console.WriteLine ("Writeback id: {0}", result("writeback_id"))
 ```
 
 
-This is not completed yet.
+This Readme file is not yet completed.
