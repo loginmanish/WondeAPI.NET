@@ -130,6 +130,7 @@ Next school
 ### Request Access
 
 Provide the school ID to request access to a school's data.
+
 C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
@@ -144,6 +145,7 @@ client.requestAccess('A0000000000')
 ### Revoke Access
 
 Provide the school ID to access already approve or pending approval.
+
 C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
@@ -249,6 +251,7 @@ Next achievement
 
 ### Assessment - (BETA)
 This endpoint is included in the stable release but is likely to change in the future. Please contact support for more information.
+
 C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
