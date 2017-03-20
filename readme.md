@@ -14,10 +14,11 @@ Not yet added to Nuget.org
 ## Endpoints
 
 ### Client
-
+C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 ```
+VB
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 ```
