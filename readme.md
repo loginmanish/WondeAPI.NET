@@ -27,7 +27,7 @@ Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 ### Schools
 C#
 ```C#
-$client = new Wonde.Client("TOKEN_GOES_HERE");
+var client = new Wonde.Client("TOKEN_GOES_HERE");
 
 // Loop through the schools your account has access to
 foreach (Dictionary<string, object> school in client.schools.all()) {
@@ -40,9 +40,9 @@ VB.Net
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
-//Loop through the schools your account has access to
+' Loop through the schools your account has access to
 For Each school as Dictionary(of String, Object) in client.schools.all()
-	//Display school name
+	' Display school name
 	Console.WriteLine("School's name is {0}, school("name"))
 Next school
 
@@ -60,7 +60,7 @@ VB.Net
 ```VB
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
-// Get single school
+' Get single school
 Dim school As Variant
 school = client.schools.get("SCHOOL_ID_GOES_HERE")
 ```
@@ -80,7 +80,7 @@ VB.Net
 Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
 For Each school as Dictionary(of String, Object) in client.schools.pending()
-    // Display school name
+    ' Display school name
     Console.WriteLine("Pending School name {0}", school("name"))
 Next school
 ```
@@ -91,17 +91,17 @@ C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
 // Search for schools with a postcode starting CB21
-var params = new Dictionary<string, string>();
-params.Add("postcode", "CB21");
-foreach (Dictionary<string, object> school in client.schools.search(null, params)) {
+var param = new Dictionary<string, string>();
+param.Add("postcode", "CB21");
+foreach (Dictionary<string, object> school in client.schools.search(null, param)) {
     // Display school name
     Console.WriteLine("School searched is {0}", school[name]);
 }
 
 // Search for schools with the establishment number = 6006
-params.Clear();
-params.Add("establishment_number", "6006");
-foreach (Dictionary<string, object> school in client.schools.search(null, params)) {
+param.Clear();
+param.Add("establishment_number", "6006");
+foreach (Dictionary<string, object> school in client.schools.search(null, param)) {
     // Display school name
     Console.WriteLine("School searched is {0}", school[name]);
 }
@@ -112,16 +112,16 @@ Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
 'Search for schools with a postcode starting CB21
 Dim params = New Dictionary(Of String, String)
-params.Add("postcode", "CB21")
-For Each school As Dictionary(Of String, Object) In client.schools.search(Nothing, params)
+param.Add("postcode", "CB21")
+For Each school As Dictionary(Of String, Object) In client.schools.search(Nothing, param)
 	'Display school name
 	Console.WriteLine("School searched is {0}", school("name"))
 Next school
 
 'Search for schools with the establishment number = 6006
-params.Clear()
+param.Clear()
 params.Add("establishment_number", "6006")
-For Each school As Dictionary(Of String, Object) In client.schools.search(Nothing, params)
+For Each school As Dictionary(Of String, Object) In client.schools.search(Nothing, param)
 	'Display school name
 	Console.WriteLine("School searched is {0}", school("name"))
 Next school
