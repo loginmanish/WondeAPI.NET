@@ -54,7 +54,7 @@ C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
 
 // Get single school
-var school = client.schools.get('SCHOOL_ID_GOES_HERE');
+var school = client.schools.get("SCHOOL_ID_GOES_HERE");
 ```
 VB.Net
 ```VB
@@ -62,7 +62,7 @@ Dim client as New Wonde.Client("TOKEN_GOES_HERE")
 
 // Get single school
 Dim school As Variant
-school = client.schools.get('SCHOOL_ID_GOES_HERE')
+school = client.schools.get("SCHOOL_ID_GOES_HERE")
 ```
 
 ### Pending Schools
@@ -134,12 +134,12 @@ Provide the school ID to request access to a school's data.
 C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
-client.requestAccess('A0000000000');
+client.requestAccess("A0000000000");
 ```
 VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
-client.requestAccess('A0000000000')
+client.requestAccess("A0000000000")
 ```
 
 ### Revoke Access
@@ -149,12 +149,12 @@ Provide the school ID to access already approve or pending approval.
 C#
 ```C#
 var client = new Wonde.Client("TOKEN_GOES_HERE");
-client.revokeAccess('A0000000000');
+client.revokeAccess("A0000000000");
 ```
 VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
-client.revokeAccess('A0000000000')
+client.revokeAccess("A0000000000")
 ```
 
 ### Students
@@ -172,7 +172,7 @@ foreach (Dictionary<string, object> kv in school.students.all())
 
 
 // Get single student
-var student = school.students.get('STUDENT_ID_GOES_HERE');
+var student = school.students.get("STUDENT_ID_GOES_HERE");
 
 // Get students and include contact_details object
 foreach (Dictionary<string, object> kv in school.students.all(new string[] { "contact_details" }))
@@ -197,11 +197,11 @@ VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
-Dim school = client.school("SCHOOL_ID_GOES_HERE");
+Dim school = client.school("SCHOOL_ID_GOES_HERE")
 
 ' Get students
 For Each kv As Dictionary(Of String, Object) In school.students.all()
-	Console.WriteLine("Student's Name is {0} {1}", kv("forename"), kv("surname"));
+	Console.WriteLine("Student's Name is {0} {1}", kv("forename"), kv("surname"))
 Next kv
 
 ' Get single student
@@ -241,7 +241,7 @@ VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
-Dim school = client.school("SCHOOL_ID_GOES_HERE");
+Dim school = client.school("SCHOOL_ID_GOES_HERE")
 
 ' Get achievements
 For Each achievement As Dictionary(Of String, Object) In school.achievements.all()
@@ -287,7 +287,7 @@ VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
-Dim school = client.school("SCHOOL_ID_GOES_HERE");
+Dim school = client.school("SCHOOL_ID_GOES_HERE")
 
 ' Get aspects
 For Each aspect As Dictionary(Of String, Object) In school.assessment.aspects.all()
@@ -331,7 +331,7 @@ VB.Net
 ```VB
 Dim client As New Wonde.Client("TOKEN_GOES_HERE")
 
-Dim school = client.school("SCHOOL_ID_GOES_HERE");
+Dim school = client.school("SCHOOL_ID_GOES_HERE")
 
 ' Get attendance
 For Each attendance As Dictionary(Of String, Object) In school.attendance.all()
@@ -351,11 +351,11 @@ var register = new Wonde.Writeback.SessionRegister();
 var attendance = new Wonde.Writeback.SessionAttendanceRecord();
 
 // Set fields
-attendance.setStudentId('STUDENT_ID_GOES_HERE');
-attendance.setDate('2017-01-01');
+attendance.setStudentId("STUDENT_ID_GOES_HERE");
+attendance.setDate("2017-01-01");
 attendance.setSession(Session.AM); // AM or PM
-attendance.setAttendanceCodeId('ATTENDANCE_CODE_ID_GOES_HERE');
-attendance.setComment('Comment here.');
+attendance.setAttendanceCodeId("ATTENDANCE_CODE_ID_GOES_HERE");
+attendance.setComment("Comment here.");
 
 // Add attendance mark to register
 register.add(attendance);
