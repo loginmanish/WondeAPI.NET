@@ -32,6 +32,12 @@ namespace Wonde.EndPoints
         public string Uri { get; set; }
 
         /// <summary>
+        /// Gets or sets the Extended Uri so base Uri does not change for the case.
+        /// </summary>
+        /// <example>base Uri can be "schools/" and extended could be "pending/" or "all/", etc</example>
+        internal string ExtendedUri { get; set; }
+
+        /// <summary>
         /// Token used to access the wonde api
         /// </summary>
         protected string _token;
@@ -61,13 +67,12 @@ namespace Wonde.EndPoints
         /// <returns>RestClient object</returns>
         private RestClient getClient(string url)
         {
-
             RestClient client = new RestClient(url);
+
             client.AddHeaders(HttpRequestHeader.Authorization, "bearer " + _token);
             client.AddHeaders(HttpRequestHeader.UserAgent, "wonde-php-client-" + Client.VERSION);
-            return client;
 
-           
+            return client;
         }
 
         private void throwError(RestClientException clientException)
@@ -114,17 +119,27 @@ namespace Wonde.EndPoints
         /// <returns>ResultIterator object to iterate through the results</returns>
         public ResultIterator all(string[] includes = null, Dictionary<string, string> parameters = null)
         {
+            return new ResultIterator(getAll(includes, parameters), Token);
+        }
+
+        /// <summary>
+        /// Gets the Dictionary object instead of the ResultIterator object 
+        /// and marked as protected, so only its derived class can have access to it.
+        /// </summary>
+        /// <param name="includes">Objects to include in result as string array. It will be added as parameter</param>
+        /// <param name="parameters">Parameters for the resources</param>
+        /// <returns>Dictionary&ltstring, object&gt; object to iterate through the results</returns>
+        protected Dictionary<string, object> getAll(string[] includes, Dictionary<string, string> parameters)
+        {
+            if (parameters == null)
+                parameters = new Dictionary<string, string>();
             if (includes != null && includes.Length > 0)
             {
                 parameters.Add("include", string.Join(",", includes));
             }
 
-            var uri = (parameters != null && parameters.Count > 0) ? Uri + '?' + StringHelper.buildHttpQueryString(parameters) : Uri;
-
-            return new ResultIterator(StringHelper.getJsonAsDictionary(getRequest(uri)), Token);
+            return StringHelper.getJsonAsDictionary(getRequest(createUri("", parameters)));
         }
-
-
 
         /// <summary>
         /// Get single resource
@@ -135,13 +150,27 @@ namespace Wonde.EndPoints
         /// <returns>Object data of the single resource. Return as an ArrayList object</returns>
         public object get(string id, string[] includes = null, Dictionary<string, string> parameters = null)
         {
+            if (parameters == null)
+                parameters = new Dictionary<string, string>();
             if (includes != null && includes.Length > 0)
             {
                 parameters.Add("include", string.Join(",", includes));
             }
-            var uri = (parameters != null && parameters.Count > 0) ? Uri + id.ToString() + '?' + StringHelper.buildHttpQueryString(parameters) : Uri + id;
 
-            return StringHelper.getJsonAsDictionary(getRequest(uri))["data"];
+            return StringHelper.getJsonAsDictionary(getRequest(createUri(id, parameters)))["data"];
+        }
+
+        /// <summary>
+        /// Creates Uri to be called using the ExtendedUri property if it is set.
+        /// </summary>
+        /// <param name="id">ID used to be called</param>
+        /// <param name="parameters">Parameters including the includes parameter</param>
+        /// <returns>String URL to be used for calling</returns>
+        private string createUri(string id = "", Dictionary<string, string> parameters = null)
+        {
+            var uri = Uri + ExtendedUri;
+            uri = (parameters != null && parameters.Count > 0) ? uri + id.ToString() + '?' + StringHelper.buildHttpQueryString(parameters) : uri + id;
+            return uri;
         }
 
         /// <summary>

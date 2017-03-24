@@ -35,7 +35,7 @@ namespace Wonde.WriteBack
         /// <summary>
         /// Gets the activity type
         /// </summary>
-        public string activity_type { get; private set; }
+        public object activity_type { get; private set; }
 
         /// <summary>
         /// Creates the StudentsAchievements object
@@ -45,6 +45,7 @@ namespace Wonde.WriteBack
         /// <param name="type">Sets the Type as Achievement attributes of ACHIEVEMENT_TYPE</param>
         /// <param name="activityType">Sets the Activity Type of Achievement attributes EVENT_SUBJECT</param>
         /// <param name="comment">Comment if any</param>
+        /// <exception cref="InvalidStudentsAchievementsException" />
         public StudentsAchievements(string employeeId, string date, string type, string activityType = "", string comment = "")
         {
             students = new List<StudentsAchievementRecord>();
@@ -67,7 +68,8 @@ namespace Wonde.WriteBack
                 message += "Type is Invalid\n";
             this.type = type.ToUpper();
             
-            this.activity_type = activityType.ToUpper();
+            if(activityType.Trim().Length > 0)
+                activity_type = activityType.ToUpper();
             this.comment = comment.Trim();
 
             if (message.Length > 0)
@@ -78,7 +80,7 @@ namespace Wonde.WriteBack
         /// Adds the StudentsAchievement record
         /// </summary>
         /// <param name="studentAchievementRecord">Object of type StudentsAchievementRecord</param>
-        public void addStudentRecord(StudentsAchievementRecord studentAchievementRecord)
+        public void addStudentsAchievementRecord(StudentsAchievementRecord studentAchievementRecord)
         {
             students.Add(studentAchievementRecord);
         }

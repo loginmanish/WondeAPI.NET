@@ -19,7 +19,7 @@ namespace Wonde
         /// <summary>
         /// Returns the data as ArrayList
         /// </summary>
-        public ArrayList ArrayData { get; private set; }
+        public IEnumerable ArrayData { get; private set; }
 
         /// <summary>
         /// Returns the Meta information as Dictionary
@@ -32,14 +32,35 @@ namespace Wonde
         public new string Token { get; private set; }
 
         /// <summary>
+        /// Gets the count of the current Array
+        /// </summary>
+        /// <returns>Array length in integer</returns>
+        public int Count
+        {
+            get
+            {
+                var objList = ArrayData as ArrayList;
+                var objDict = ArrayData as Dictionary<string, object>;
+                if (objList != null)
+                    return objList.Count;
+                else if (objDict != null)
+                    return objDict.Count;
+                else
+                    return -1;
+            }
+        }
+
+        /// <summary>
         /// Constructor to create ResultIterator object
         /// </summary>
         /// <param name="resp">Data returned in Json converted to Dictionary as Key/Value</param>
         /// <param name="token">Token used</param>
         public ResultIterator(Dictionary<string, object> resp, string token) : base(token, "")
         {
-            this.ArrayData = (ArrayList)resp["data"];
-            this.MetaData = (Dictionary<string, object>)resp["meta"];
+            if(resp.Keys.Contains("data"))
+                ArrayData = (IEnumerable)resp["data"];
+            if(resp.Keys.Contains("meta"))
+                MetaData = (Dictionary<string, object>)resp["meta"];
             this.Token = token;
         }
         
@@ -51,6 +72,8 @@ namespace Wonde
         {
             return ArrayData.GetEnumerator();
         }
+
+        
 
         /// <summary>
         /// Revinds the cursor to its initial position
@@ -66,7 +89,12 @@ namespace Wonde
         /// <returns></returns>
         public int key()
         {
-            return ArrayData.IndexOf(ArrayData.GetEnumerator().Current);
+            var arrList = ArrayData as ArrayList;
+
+            if (arrList != null)
+                return arrList.IndexOf(ArrayData.GetEnumerator().Current);
+            else
+                return -1;
         }
 
         /// <summary>
@@ -95,7 +123,15 @@ namespace Wonde
         /// <returns>true if valid</returns>
         public bool valid()
         {
-            return ArrayData != null && ArrayData.Count > 0;
+            var objArrayList = ArrayData as ArrayList;
+            var objDictionary = ArrayData as Dictionary<string, object>;
+
+            if (objArrayList != null)
+                return objArrayList.Count > 0;
+            else if (objDictionary != null)
+                return objDictionary.Count > 0;
+            else
+                return false;
         }
 
         /// <summary>

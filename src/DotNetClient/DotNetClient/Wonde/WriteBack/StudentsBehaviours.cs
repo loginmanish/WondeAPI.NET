@@ -34,27 +34,29 @@ namespace Wonde.WriteBack
         /// <summary>
         /// Gets the bullying type
         /// </summary>
-        public string bullying_type { get; private set; }
-
-        /// <summary>
-        /// Gets the activity type
-        /// </summary>
-        public string activity_type { get; private set; }
-
-        /// <summary>
-        /// Gets the Location tme zone
-        /// </summary>
-        public string location { get; private set; }
-
-        /// <summary>
-        /// Gets the Time 
-        /// </summary>
-        public string time { get; private set; }
+        public object bullying_type { get; private set; }
 
         /// <summary>
         /// Gets the comment
         /// </summary>
         public string comment { get; private set; }
+
+        /// <summary>
+        /// Gets the activity type
+        /// </summary>
+        public object activity_type { get; private set; }
+
+        /// <summary>
+        /// Gets the Location tme zone
+        /// </summary>
+        public object location { get; private set; }
+
+        /// <summary>
+        /// Gets the Time 
+        /// </summary>
+        public object time { get; private set; }
+
+        
 
         /// <summary>
         /// Creates object of StudentsBehaviour
@@ -67,7 +69,8 @@ namespace Wonde.WriteBack
         /// <param name="activityType">Sets the activity type as per Behaviour attribute BEHAVIOUR_ACTIVITY</param>
         /// <param name="location">Sets the location as per Behaviour attribute EVENT_TIME</param>
         /// <param name="time">Sets the time as per Behaviour attribute EVENT_LOCATION</param>
-        /// <param name="comment"></param>
+        /// <param name="comment">Comment if any</param>
+        /// <exception cref="InvalidStudentsBehavioursException" />
         public StudentsBehaviours(string employeeId, string date, string status, string type, string bullyingType = "", string activityType = "", string location = "", string time = "", string comment = "")
         {
             students = new List<StudentsBehaviourRecord>();
@@ -93,12 +96,16 @@ namespace Wonde.WriteBack
             this.status = status.ToUpper();
 
             if (message.Length > 0)
-                throw new InvalidStudentsAchievementsException(message.Trim());
+                throw new InvalidStudentsBehavioursException(message.Trim());
 
-            this.bullying_type = bullyingType.ToUpper();
-            this.activity_type = activityType.ToUpper();
-            this.location = location.ToUpper();
-            this.time = time.ToUpper();
+            if(bullyingType.Trim().Length > 0)
+                bullying_type = bullyingType.ToUpper();
+            if(activityType.Trim().Length > 0)
+                activity_type = activityType.ToUpper();
+            if(location.Trim().Length > 0)
+                this.location = location.ToUpper();
+            if(time.Trim().Length > 0)
+                this.time = time.ToUpper();
             this.comment = comment;
         }
 

@@ -37,6 +37,11 @@ namespace Wonde.WriteBack
         public string comment { get; private set; }
 
         /// <summary>
+        /// Gets the minutes_late string
+        /// </summary>
+        public object minutes_late { get; private set; }
+
+        /// <summary>
         /// Sets the student id
         /// </summary>
         /// <param name="studentId">String student id</param>
@@ -49,6 +54,51 @@ namespace Wonde.WriteBack
             }
 
             student_id = studentId;
+        }
+
+        /// <summary>
+        /// Create object 
+        /// </summary>
+        public SessionAttendanceRecord() { }
+
+        /// <summary>
+        /// Create object with initialization of data
+        /// </summary>
+        /// <param name="studentId">String student id</param>
+        /// <param name="date">string date in y-m-d format</param>
+        /// <param name="session">Session AM or PM</param>
+        /// <param name="attendanceCodeId">Attendance Code id string</param>
+        /// <param name="comment">Comment string</param>
+        /// <param name="minutesLate">minutes late to register as int</param>
+        /// <exception cref="InvalidSessionAttendanceException" />
+        public SessionAttendanceRecord(string studentId, string date, Session session, string attendanceCodeId, string comment = null, int minutesLate = -1)
+        {
+            var message = "";
+            if (studentId.Trim().Length > 0)
+                student_id = student_id;
+            else
+                message += "Invalid Student ID\n";
+
+            if (date.Trim().Length <= 0)
+                message += "Date is Invalid\n";
+            DateTime dt;
+            if (DateTime.TryParseExact(date, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dt))
+                this.date = dt.ToString("yyyy-MM-dd");
+            else
+                message += "Date is Invalid\n";
+
+            this.session = session.ToString();
+
+            if (attendanceCodeId.Trim().Length <= 0)
+                message += "Attendance Code ID is invalid\n";
+            if (message.Length > 0)
+                throw new InvalidSessionAttendanceException(message);
+
+            attendance_code_id = attendanceCodeId;
+
+            this.comment = comment;
+            if (minutesLate >= 0)
+                minutes_late = minutesLate;
         }
 
         /// <summary>
@@ -97,7 +147,7 @@ namespace Wonde.WriteBack
         /// 
         /// Attendance codes can be fetched from the attendance-code endpoint
         /// </summary>
-        /// <param name="attendanceCodeId"></param>
+        /// <param name="attendanceCodeId">Attendance Code Id string</param>
         /// <exception cref="InvalidSessionAttendanceException" />
         public void setAttendanceCodeId(string attendanceCodeId)
         {
@@ -116,6 +166,16 @@ namespace Wonde.WriteBack
         public void setComment(string comment)
         {
             this.comment = comment.Trim();
+        }
+
+        /// <summary>
+        /// Sets the minutes_late
+        /// </summary>
+        /// <param name="minutesLate">int value of minutes late for registration</param>
+        public void setMinutesLate(int minutesLate = -1)
+        {
+            if (minutesLate >= 0)
+                minutes_late = minutesLate;
         }
 
         /// <summary>

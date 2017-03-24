@@ -21,6 +21,34 @@ namespace Wonde.WriteBack
         public string attendance_code_id { get; private set; }
 
         /// <summary>
+        /// Create object
+        /// </summary>
+        public LessionAttendanceRecord() { }
+
+        /// <summary>
+        /// Creates object while initializing with required data
+        /// </summary>
+        /// <param name="studentId">string student id</param>
+        /// <param name="lessionId">string lession id</param>
+        /// <param name="attendanceCodeId">string attendance code id</param>
+        public LessionAttendanceRecord(string studentId, string lessionId, string attendanceCodeId) 
+        {
+            string message = "";
+            if (studentId.Trim().Length <= 0)
+                message += "Invalid student id\n";
+            if (lessionId.Trim().Length <= 0)
+                message += "Invalid lession id\n";
+            if (attendanceCodeId.Trim().Length <= 0)
+                message += "Invalid attendance code id\n";
+            if (message.Length > 0)
+                throw new InvalidLessonAttendanceException(message);
+
+            student_id = studentId;
+            lesson_id = lessionId;
+            attendance_code_id = attendanceCodeId;
+        }
+
+        /// <summary>
         /// Set student id
         /// </summary>
         /// <param name="studentId">Student id in string format</param>
@@ -63,7 +91,7 @@ namespace Wonde.WriteBack
         }
 
         /// <summary>
-        /// Checks if all attributes are set
+        /// Check if all attributes are set
         /// </summary>
         /// <returns>returns if all fine</returns>
         public bool isValid()

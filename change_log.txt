@@ -1,0 +1,18 @@
+Date: 24-Mar-2016
+Wonde.NET Version 1.0.2
+
+Changes:
+1. Version change: from version 1.0.1 to 1.0.2
+2. Fixed Known issues and possible issues and these can be on PHP client as well.
+   a. Added ExtendedUri to be updated on schools class and are updated on methods "pending", "search" and "get" instead of updating the base Uri property. It was a requirement as when the same method was called more than one time on same school with school id, these would add the relevant URL with same values creating an invalid Uri.
+   
+   b. Updated ResultIterator class and set ArrayData from ArrayList to IEnumerable. This helps in getting all data instead of just ArrayList.
+
+3. Added methods and classes for Posting behaviours and achievements. 
+   a. Classes added are StudentsAchievements, StudentsAchievementRecord, StudentsBehaviours, StudentsBehaviourRecord. 
+   b. Exceptions added are InvalidStudentsAchievementsException and InvalidStudentsBehavioursException
+
+
+
+Date: 20-Mar-2016
+Wonde.NET Version 1.0.1 added as Wonde Client

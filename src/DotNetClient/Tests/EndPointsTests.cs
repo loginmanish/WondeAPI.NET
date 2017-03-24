@@ -40,7 +40,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Students count fails.");
+            Assert.IsTrue(result.Count > 10, "Students count fails.");
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Employees count fails.");
+            Assert.IsTrue(result.Count > 10, "Employees count fails.");
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Contacts count fails.");
+            Assert.IsTrue(result.Count > 10, "Contacts count fails.");
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Subjects count fails.");
+            Assert.IsTrue(result.Count > 10, "Subjects count fails.");
         }
 
         [TestMethod]
@@ -104,7 +104,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Rooms count fails.");
+            Assert.IsTrue(result.Count > 10, "Rooms count fails.");
         }
 
         [TestMethod]
@@ -120,7 +120,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Groups count fails.");
+            Assert.IsTrue(result.Count > 10, "Groups count fails.");
         }
 
         [TestMethod]
@@ -136,7 +136,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Classes count fails.");
+            Assert.IsTrue(result.Count > 10, "Classes count fails.");
         }
 
         [TestMethod]
@@ -152,7 +152,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Events count fails.");
+            Assert.IsTrue(result.Count > 10, "Events count fails.");
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Medical events count fails.");
+            Assert.IsTrue(result.Count > 10, "Medical events count fails.");
         }
 
         [TestMethod]
@@ -184,7 +184,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Medical conditions count fails.");
+            Assert.IsTrue(result.Count > 10, "Medical conditions count fails.");
         }
 
         [TestMethod]
@@ -200,7 +200,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Periods count fails.");
+            Assert.IsTrue(result.Count > 10, "Periods count fails.");
         }
 
         [TestMethod]
@@ -216,7 +216,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Lessons count fails.");
+            Assert.IsTrue(result.Count > 10, "Lessons count fails.");
         }
 
         [TestMethod]
@@ -232,7 +232,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Achievements count fails.");
+            Assert.IsTrue(result.Count > 10, "Achievements count fails.");
         }
 
         [TestMethod]
@@ -248,7 +248,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Behaviours count fails.");
+            Assert.IsTrue(result.Count > 10, "Behaviours count fails.");
         }
 
         [TestMethod]
@@ -264,7 +264,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Attendance Sumaries count fails.");
+            Assert.IsTrue(result.Count > 10, "Attendance Sumaries count fails.");
         }
     }
 }

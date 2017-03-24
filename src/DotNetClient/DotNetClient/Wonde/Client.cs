@@ -16,7 +16,7 @@ namespace Wonde
         /// <summary>
         /// Setting version for the client
         /// </summary>
-        public const string VERSION = "1.0.1";
+        public const string VERSION = "1.0.2";
 
         /// <summary>
         /// Token for accessing the server

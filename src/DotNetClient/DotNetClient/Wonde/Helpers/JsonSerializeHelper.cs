@@ -37,6 +37,7 @@ namespace Wonde.Helpers
             JavaScriptSerializer ser = new JavaScriptSerializer();
             if (arrayObj == null)
                 return "{}";
+
             return ser.Serialize(arrayObj);
         }
 
@@ -47,11 +48,11 @@ namespace Wonde.Helpers
             {
                 foreach(KeyValuePair<string, string> kv in data)
                 {
-                    query += kv.Key + "=" + kv.Value + delimeter;
+                    query += kv.Key + "=" + HttpUtility.UrlEncode(kv.Value) + delimeter;
                 }
             }
 
-            return HttpUtility.UrlEncode(query);
+            return query.Substring(0, query.Length - 1);
         }
     }
 }

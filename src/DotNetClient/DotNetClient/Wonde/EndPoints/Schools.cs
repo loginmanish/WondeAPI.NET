@@ -163,7 +163,7 @@ namespace Wonde.EndPoints
         /// <returns>ResultIterator object to iterate through the results</returns>
         public ResultIterator pending(string[] includes = null, Dictionary<string, string> parameters = null)
         {
-            Uri = Uri + "pending/";
+            ExtendedUri = "pending/";
             return all(includes, parameters);
         }
 
@@ -175,7 +175,7 @@ namespace Wonde.EndPoints
         /// <returns>ResultIterator object to iterate through the results</returns>
         public ResultIterator search(string[] includes = null, Dictionary<string, string> parameters = null)
         {
-            Uri = Uri + "all/";
+            ExtendedUri = "all/";
             return all(includes, parameters);
         }
 
@@ -188,7 +188,7 @@ namespace Wonde.EndPoints
         /// <returns>Object data of the single resource</returns>
         public new object get(string id, string[] includes = null, Dictionary<string, string> parameters = null)
         {
-            Uri = "schools/";
+            ExtendedUri = "schools/";
             return base.get(id, includes, parameters);
         }
 

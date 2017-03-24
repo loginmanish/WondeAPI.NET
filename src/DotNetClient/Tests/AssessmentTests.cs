@@ -39,7 +39,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Assessment templates count fails.");
+            Assert.IsTrue(result.Count > 10, "Assessment templates count fails.");
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Assessment aspects count fails.");
+            Assert.IsTrue(result.Count > 10, "Assessment aspects count fails.");
         }
 
         [TestMethod]
@@ -71,7 +71,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Assessment results count fails.");
+            Assert.IsTrue(result.Count > 10, "Assessment results count fails.");
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Assessment resultsets count fails.");
+            Assert.IsTrue(result.Count > 10, "Assessment resultsets count fails.");
         }
 
         [TestMethod]
@@ -103,7 +103,7 @@ namespace Tests
                 Assert.IsTrue(row.Count > 0);
             }
 
-            Assert.IsTrue(result.ArrayData.Count > 10, "Assessment marksheets count fails.");
+            Assert.IsTrue(result.Count > 10, "Assessment marksheets count fails.");
         }
     }
 }
