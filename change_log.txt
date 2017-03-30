@@ -1,3 +1,10 @@
+Date: 31-Mar-2017
+Wonde.NET Version 1.0.2
+
+Added Nuget Package to the repository for release.
+
+
+
 Date: 24-Mar-2016
 Wonde.NET Version 1.0.2
 
