@@ -11,6 +11,13 @@ namespace Tests
     public class AssessmentTests
     {
         private Schools school;
+        private TestContext context;
+
+        public TestContext TestContext
+        {
+            get { return context; }
+            set { context = value; }
+        }
 
         [TestInitialize]
         public void initialize()
@@ -31,15 +38,16 @@ namespace Tests
         {
             var result = school.assessment.Templates.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Assessment templates count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Assessment templates count fails.");
         }
 
         [TestMethod]
@@ -47,15 +55,16 @@ namespace Tests
         {
             var result = school.assessment.Aspects.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Assessment aspects count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Assessment aspects count fails.");
         }
 
         [TestMethod]
@@ -63,15 +72,16 @@ namespace Tests
         {
             var result = school.assessment.Results.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Assessment results count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Assessment results count fails.");
         }
 
         [TestMethod]
@@ -79,15 +89,16 @@ namespace Tests
         {
             var result = school.assessment.ResultSets.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Assessment resultsets count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Assessment resultsets count fails.");
         }
 
         [TestMethod]
@@ -95,15 +106,16 @@ namespace Tests
         {
             var result = school.assessment.MarkSheets.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Assessment marksheets count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Assessment marksheets count fails.");
         }
     }
 }

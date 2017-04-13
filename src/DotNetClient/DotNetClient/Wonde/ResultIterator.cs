@@ -13,9 +13,11 @@ namespace Wonde
     /// <summary>
     /// Json data received represented as Array
     /// </summary>
-    public class ResultIterator : BootstrapEndpoint, IEnumerable
+    public class ResultIterator : BootstrapEndpoint, IEnumerable, IEnumerator 
     {
-      
+
+        private IEnumerator arrEnum;
+
         /// <summary>
         /// Returns the data as ArrayList
         /// </summary>
@@ -46,7 +48,7 @@ namespace Wonde
                 else if (objDict != null)
                     return objDict.Count;
                 else
-                    return -1;
+                    return 0;
             }
         }
 
@@ -70,7 +72,8 @@ namespace Wonde
         /// <returns>IEnumerator for the array</returns>
         public IEnumerator GetEnumerator()
         {
-            return ArrayData.GetEnumerator();
+            arrEnum = ArrayData.GetEnumerator();
+            return this;
         }
 
         
@@ -78,21 +81,21 @@ namespace Wonde
         /// <summary>
         /// Revinds the cursor to its initial position
         /// </summary>
-        public void revind()
+        public void Reset()
         {
-            ArrayData.GetEnumerator().Reset();
+            arrEnum.Reset();
         }
 
         /// <summary>
         /// Returns the current key of the cursor position
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Current position</returns>
         public int key()
         {
             var arrList = ArrayData as ArrayList;
 
             if (arrList != null)
-                return arrList.IndexOf(ArrayData.GetEnumerator().Current);
+                return arrList.IndexOf(arrEnum.Current);
             else
                 return -1;
         }
@@ -101,37 +104,29 @@ namespace Wonde
         /// returns the current object in the array as per cursor position
         /// </summary>
         /// <returns>Dictionary&ltstring, object&gt object at current position in array</returns>
-        public Dictionary<string, object> current()
+        public object Current
         {
-            return (Dictionary<string, object>) ArrayData.GetEnumerator().Current;
+            get
+            {
+                return arrEnum.Current;
+            }
         }
 
         /// <summary>
         /// Returns the next object and moves the cursor
         /// </summary>
         /// <returns>The next object in the array moving the cursor as well</returns>
-        public Dictionary<string, object> next()
+        public bool MoveNext()
         {
-            if(ArrayData.GetEnumerator().MoveNext())
-                return (Dictionary<string, object>)ArrayData.GetEnumerator().Current;
-            return null;
-        }
-
-        /// <summary>
-        /// Checks if the current Array has data and thus is valid
-        /// </summary>
-        /// <returns>true if valid</returns>
-        public bool valid()
-        {
-            var objArrayList = ArrayData as ArrayList;
-            var objDictionary = ArrayData as Dictionary<string, object>;
-
-            if (objArrayList != null)
-                return objArrayList.Count > 0;
-            else if (objDictionary != null)
-                return objDictionary.Count > 0;
+            if (arrEnum.MoveNext())
+                return true;
             else
-                return false;
+            {
+                if (nextPage())
+                    return arrEnum.MoveNext();
+                else
+                    return false;
+            }
         }
 
         /// <summary>
@@ -176,7 +171,8 @@ namespace Wonde
 
             MetaData = (Dictionary<string, object>)res["meta"];
             ArrayData = (ArrayList)res["data"];
-            revind();
+            Reset();
+            arrEnum = ArrayData.GetEnumerator();
             return true;
         }
     }

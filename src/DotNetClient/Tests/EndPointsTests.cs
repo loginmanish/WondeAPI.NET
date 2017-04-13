@@ -10,6 +10,13 @@ namespace Tests
     public class EndPointsTests
     {
         private Schools school;
+        private TestContext context;
+
+        public TestContext TestContext
+        {
+            get { return context; }
+            set { context = value; }
+        }
 
         [TestInitialize]
         public void initialize()
@@ -32,15 +39,16 @@ namespace Tests
         {
             var result = school.students.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Students count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 60, "Students count fails.");
         }
 
         [TestMethod]
@@ -48,15 +56,16 @@ namespace Tests
         {
             var result = school.employees.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Employees count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Employees count fails.");
         }
 
         [TestMethod]
@@ -64,15 +73,16 @@ namespace Tests
         {
             var result = school.contacts.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Contacts count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Contacts count fails.");
         }
 
         [TestMethod]
@@ -80,15 +90,16 @@ namespace Tests
         {
             var result = school.subjects.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Subjects count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Subjects count fails.");
         }
 
         [TestMethod]
@@ -96,15 +107,16 @@ namespace Tests
         {
             var result = school.rooms.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Rooms count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Rooms count fails.");
         }
 
         [TestMethod]
@@ -112,15 +124,16 @@ namespace Tests
         {
             var result = school.groups.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Groups count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Groups count fails.");
         }
 
         [TestMethod]
@@ -128,15 +141,16 @@ namespace Tests
         {
             var result = school.classes.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Classes count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Classes count fails.");
         }
 
         [TestMethod]
@@ -144,15 +158,16 @@ namespace Tests
         {
             var result = school.events.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Events count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Events count fails.");
         }
 
         [TestMethod]
@@ -160,15 +175,16 @@ namespace Tests
         {
             var result = school.medicalEvents.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Medical events count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Medical events count fails.");
         }
 
         [TestMethod]
@@ -176,15 +192,16 @@ namespace Tests
         {
             var result = school.medicalConditions.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Medical conditions count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Medical conditions count fails.");
         }
 
         [TestMethod]
@@ -192,15 +209,16 @@ namespace Tests
         {
             var result = school.periods.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Periods count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Periods count fails.");
         }
 
         [TestMethod]
@@ -208,15 +226,16 @@ namespace Tests
         {
             var result = school.lessons.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Lessons count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Lessons count fails.");
         }
 
         [TestMethod]
@@ -224,15 +243,16 @@ namespace Tests
         {
             var result = school.achievements.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Achievements count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Achievements count fails.");
         }
 
         [TestMethod]
@@ -240,15 +260,16 @@ namespace Tests
         {
             var result = school.behaviours.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Behaviours count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Behaviours count fails.");
         }
 
         [TestMethod]
@@ -256,15 +277,16 @@ namespace Tests
         {
             var result = school.attendanceSumaries.all();
             Assert.IsNotNull(result);
-
+            List<object> items = new List<object>();
             foreach (Dictionary<string, object> row in result)
             {
+                items.Add(row);
                 Assert.IsNotNull(row);
                 Assert.IsInstanceOfType(row, typeof(Dictionary<string, object>));
                 Assert.IsTrue(row.Count > 0);
             }
-
-            Assert.IsTrue(result.Count > 10, "Attendance Sumaries count fails.");
+            context.WriteLine("Total count: {0}", items.Count);
+            Assert.IsTrue(items.Count > 10, "Attendance Sumaries count fails.");
         }
     }
 }

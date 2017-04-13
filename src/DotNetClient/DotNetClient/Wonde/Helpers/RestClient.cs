@@ -184,16 +184,24 @@ namespace Wonde.Helpers
 
         private RestClientException getRestClientException(HttpWebResponse res, WebException webex)
         {
+            string message = "";
+            
             if (res == null && webex != null)
                 res = (HttpWebResponse)webex.Response;
-            string message = string.Format("Request Failed. Received HTTP {0}", (int)res.StatusCode);
+            if (res == null)
+                message = "Request Failed. Error: " + webex.Message;
+            else
+                message = string.Format("Request Failed. Received HTTP {0}", (int)res.StatusCode);
             RestClientException ex = null;
             if (webex != null)
                 ex = new RestClientException(message, webex);
             else
                 ex = new RestClientException(message);
-            ex.Response = res;
-            ex.ErrorDetails = StringHelper.getJsonAsDictionary((new StreamReader(res.GetResponseStream())).ReadToEnd());
+            if (res != null)
+            {
+                ex.Response = res;
+                ex.ErrorDetails = StringHelper.getJsonAsDictionary((new StreamReader(res.GetResponseStream())).ReadToEnd());
+            }
             return ex;
         }
 
