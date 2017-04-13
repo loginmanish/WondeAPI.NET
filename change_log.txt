@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Date: 13-Apr-2017
 Wonde.NET Version 1.0.3
 
@@ -5,6 +6,12 @@ Changes:
 1. Added option to iterate through all data which include pagination. Updated ResultIterator class and ceated it as IEnumerator and IEnumerable.
 2. Updated Nuget Package for new Version 1.0.3
 3. Fixed bug for Exception received when there is error in network connection.
+=======
+Date: 31-Mar-2017
+Wonde.NET Version 1.0.2
+
+Added Nuget Package to the repository for release.
+>>>>>>> origin/development
 
 
 
