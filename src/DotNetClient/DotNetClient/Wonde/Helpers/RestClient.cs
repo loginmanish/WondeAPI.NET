@@ -144,12 +144,7 @@ namespace Wonde.Helpers
 
                 if (!string.IsNullOrEmpty(PostData) && Method == HttpVerb.POST)
                 {
-                    var encoding = new UTF8Encoding();
-<<<<<<< HEAD
                     var bytes = Encoding.UTF8.GetBytes(PostData);
-=======
-                    var bytes = Encoding.GetEncoding("utf8").GetBytes(PostData);
->>>>>>> origin/development
                     request.ContentLength = bytes.Length;
 
                     using (var writeStream = request.GetRequestStream())
